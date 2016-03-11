@@ -1,8 +1,8 @@
 mongodb:
-  image: dockerfile/mongodb
-  volumes:
-     - ./mongodb:/data/db
-  command: "mongod --smallfiles"
+  image: tutum/mongodb
+  environment:
+    AUTH: 'no'
+    MONGODB_DATABASE: seyren
 
 seyren:
   build: .
@@ -10,10 +10,13 @@ seyren:
     - "8080:8080"
   links:
     - mongodb
-  env_file:
-    - ./.env
   environment:
-    - SEYREN_LOG_PATH=/var/log/seyren/
-    - SEYREN_URL
-  volumes:
-    - ./logs:/var/log/seyren
+    MONGO_URL: mongodb://mongodb:27017/seyren
+    SEYREN_URL: http://localhost:8080
+    GRAPHITE_URL:
+    GRAPHITE_REFRESH: 60000
+    GRAPHITE_CONNECTION_REQUEST_TIMEOUT: 300000
+    GRAPHITE_CONNECT_TIMEOUT: 300000
+    GRAPHITE_SOCKET_TIMEOUT: 300000
+    SMTP_HOST: localhost
+    SEYREN_LOG_PATH: /var/log/seyren/
