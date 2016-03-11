@@ -5,15 +5,14 @@ A dockerized [Seyren](https://github.com/scobal/seyren) container that runs a a 
 
 ## Usage
 
-```
-# Run MongoDB
-docker run -d --name mongodb mongo:3.0.1
+    # Run MongoDB
+    docker run -d --name mongodb mongo:3.0.1
 
-# Run Seyren and link MongoDB
-docker run -d -p 8080:8080 --name seyren --link mongodb:mongodb -it crgwbr/seyren http://[GRAPHITE_URL]
+    # Run Seyren and link MongoDB
+    docker run -d -p 8080:8080 --name seyren --link mongodb:mongodb -it crgwbr/seyren http://[GRAPHITE_URL]
 
-# Run Seyren and link MongoDB using environment variable for graphite URL
-docker run -d -p 8080:8080 --name seyren --link mongodb:mongodb -e GRAPHITE_URL=http://[GRAPHITE_URL] -it crgwbr/seyren
+    # Run Seyren and link MongoDB using environment variable for graphite URL
+    docker run -d -p 8080:8080 --name seyren --link mongodb:mongodb -e GRAPHITE_URL=http://[GRAPHITE_URL] -it crgwbr/seyren
 
 ## Building
 
