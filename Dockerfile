@@ -29,8 +29,8 @@ RUN set -x \
 # Fetch Seyren
 RUN wget http://github.com/scobal/seyren/releases/download/"$SEYREN_VERSION"/seyren-"$SEYREN_VERSION".jar -O $HOME/seyren.jar
 
-COPY run-seyren.sh $HOME/run-seyren.sh
-RUN chmod +x $HOME/run-seyren.sh
+COPY run-seyren.sh /run-seyren.sh
+RUN chmod +x /run-seyren.sh
 
 COPY docker-entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
@@ -38,4 +38,4 @@ RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
 EXPOSE 8080
-CMD ["~/run-seyren.sh"]
+CMD ["/run-seyren.sh"]
