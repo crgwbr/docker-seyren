@@ -1,2 +1,4 @@
 #!/bin/bash
-cd /var/lib/seyren && java -jar seyren.jar
+mkdir /tmp/seyren/
+cd /tmp/seyren/
+java -jar $HOME/seyren.jar

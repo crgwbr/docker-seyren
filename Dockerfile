@@ -11,7 +11,6 @@ RUN useradd -u 431 -r -g $SEYREN_GROUP -d $HOME -s /sbin/nologin -c "Seyren user
 
 RUN mkdir -p $HOME
 RUN chown -R $SEYREN_USER:$SEYREN_GROUP $HOME
-WORKDIR $HOME
 
 # grab gosu for easy step-down from root
 ENV GOSU_VERSION 1.7
